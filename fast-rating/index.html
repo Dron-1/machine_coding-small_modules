@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Star rating App</title>
+    <style>
+        .star{
+            font-size: 2rem;
+            display: inline;
+            margin: 0.5rem;
+            cursor: pointer;
+        }
+        .filled{
+            color: gold;
+            transition: color 0.3s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div class="star-container">
+        <div class="star" data-value="1">&star;</div>
+        <div class="star" data-value="2">&star;</div>
+        <div class="star" data-value="3">&star;</div>
+        <div class="star" data-value="4">&star;</div>
+        <div class="star" data-value="5">&star;</div>
+    </div>
+    <div class="rating-display">0</div>
+
+    <script>
+        const stars = document.querySelectorAll('.star')
+        const ratingDisplay = document.querySelector('.rating-display')
+
+        stars.forEach(function(starElement) {
+            starElement.addEventListener('click', (e) => {
+                const ratingSelected = starElement.getAttribute('data-value')
+                console.log(ratingSelected)
+                updateRating(ratingSelected)
+            })
+        })
+
+        function updateRating(rating) {
+            // update ratingDisplay
+            ratingDisplay.textContent = rating;
+
+            // update style of stars
+            stars.forEach( function(starElement) {
+                // the below commented line is also correct
+                // starElement.classList.toggle( 'filled', starElement.getAttribute('data-value') <= rating )
+                if( starElement.getAttribute('data-value') <= rating ){
+                    starElement.classList.add( 'filled')
+                    starElement.innerHTML= '&starf;'   
+                }else{
+                    starElement.classList.remove('filled')
+                    starElement.innerHTML= '&star;'
+                }
+                // starElement.innerHTML.toggle('&starf;', starElement.getAttribute('data-value') <= rating ) 
+            })
+        }
+    </script>
+</body>
+</html>
