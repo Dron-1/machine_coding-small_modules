@@ -1,0 +1,83 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "Arial", sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.comment-form{
+    padding: 20px;
+}
+#comment-input,#submit-comment{
+    /* display: block; */
+    resize: none;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+}
+#comment-input {
+    height: 4rem;
+    font-family: "Arial", sans-serif;
+    padding: 10px;
+}
+
+#submit-comment {
+    background-color: #22A7F0;
+    outline: black;
+    color: white;
+    /* border: black; */
+    height: 2rem;
+}
+
+.comments-container, .replies-container{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.7);
+    transition: box-shadow 0.3s;
+}
+.reply-input{
+    display: none;
+    width: 80%;
+    resize: none;
+    font-family: "Arial", sans-serif;
+    padding: 10px;
+    margin-top: 3px;
+}
+.commentElement{
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.7);
+    transition: box-shadow 0.3s;
+}
+.comment-text{
+    padding: 5px;
+    background-color: #D3D3D3;
+    border-radius: 5px;
+    /* opacity: 0.6; */
+}
+.reply-btn{
+    display: inline;
+    font-size: smaller;
+    padding: 5px;
+    cursor: pointer;
+}
+.reply-text{
+    /* font-size: smaller; */
+    
+}
+.submit-reply{
+    font-size: 2rem;
+    display: none;
+    cursor: pointer;
+}
