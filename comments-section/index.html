@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments Section Module</title>
+    <link rel = "stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="comment-form">
+        <textarea id="comment-input" placeholder="Write your comment here..."></textarea>
+        <button id="submit-comment">Comment</button>
+    </div>
+    <div class="comments-section">
+        <div class="comments-container">
+            <!-- DEMO INPUT -->
+            <div class="commentElement">
+                <p class="comment-text">Good job man!</p>
+                <p class="reply-btn">Reply</p>
+                <textarea class="reply-input" placeholder="Write your reply here..."></textarea>
+                <span class="submit-reply">&#x27A2;</span>
+                <!-- -------------REPLIES--------- -->
+                <!-- on clicking reply-btn -->
+                <div class="replies-container">
+                    <p class="reply-text">Thank you!</p>
+                    <p class="reply-btn">Reply</p>
+        
+                    <!-- on-reply -recursion -->
+                    <!-- Reply to a reply is not implemented yet -->
+        
+                </div>
+                <!-- -------------REPLIES--------- -->
+
+            </div>
+        </div>
+        
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
