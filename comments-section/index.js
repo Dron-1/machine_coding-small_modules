@@ -57,7 +57,12 @@ document.addEventListener('DOMContentLoaded',   function() {
         replyContainer.innerHTML = `
             <p class="reply-text">${replyText}</p>
             <p class="reply-btn">Reply</p>
+            <textarea class="reply-input" placeholder="Write your reply here..."></textarea>
+            <span class="submit-reply">&#x27A2;</span>
         `
+        // <!-- on-reply -recursion implemented-->
+        // || Added textare and spam tags to complete recursion replies ||
+        // <!-- on-reply -recursion implemented-->
 
         parentComment.appendChild(replyContainer)
     }
