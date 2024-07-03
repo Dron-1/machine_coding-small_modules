@@ -10,50 +10,76 @@
             display: inline;
             margin: 0.5rem;
             cursor: pointer;
+            color: gray;
         }
         .filled{
             color: gold;
-            transition: color 0.3s ease-in;
+        }
+        .rating-display{
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
+    <h1> Rating Module </h1>
+
     <div class="star-container">
-        <div class="star" data-value="1">&star;</div>
-        <div class="star" data-value="2">&star;</div>
-        <div class="star" data-value="3">&star;</div>
-        <div class="star" data-value="4">&star;</div>
-        <div class="star" data-value="5">&star;</div>
+        <div class="star" data-value="1">&starf;</div>
+        <div class="star" data-value="2">&starf;</div>
+        <div class="star" data-value="3">&starf;</div>
+        <div class="star" data-value="4">&starf;</div>
+        <div class="star" data-value="5">&starf;</div>
     </div>
-    <div class="rating-display">0</div>
+    <div class="rating-display">You rated : 0</div>
 
     <script>
         const stars = document.querySelectorAll('.star')
+        const starsContainer = document.querySelector('.star-container');
         const ratingDisplay = document.querySelector('.rating-display')
 
+        rating = 0;
         stars.forEach(function(starElement) {
             starElement.addEventListener('click', (e) => {
                 const ratingSelected = starElement.getAttribute('data-value')
+                rating = ratingSelected;
                 console.log(ratingSelected)
                 updateRating(ratingSelected)
+            })
+        })
+    
+        // on mouse hover the star, the stars gets golden color irrespective of the rating chosen
+        starsContainer.addEventListener('mouseover', (e) => {
+            const target = e.target
+            // console.log(target)
+
+            if( target.classList.contains('star')) { 
+                stars.forEach(function(star){
+                    console.log("data:", target.getAttribute('data-value'))
+                    console.log("estar:",star)
+                    star.classList.toggle('filled', star.getAttribute('data-value') <= e.target.getAttribute('data-value'))
+                })
+            }
+        })
+
+        // on mouse leave the star the stars go back to grey color until rating chosed
+        starsContainer.addEventListener('mouseleave', function(e) {
+
+            console.log(stars)
+
+            stars.forEach(function(star){
+                console.log("leave:",rating)
+                star.classList.toggle('filled', star.getAttribute('data-value') <= rating)
             })
         })
 
         function updateRating(rating) {
             // update ratingDisplay
-            ratingDisplay.textContent = rating;
+            ratingDisplay.textContent = `You rated : ${rating}`;
 
             // update style of stars
             stars.forEach( function(starElement) {
                 // the below commented line is also correct
-                // starElement.classList.toggle( 'filled', starElement.getAttribute('data-value') <= rating )
-                if( starElement.getAttribute('data-value') <= rating ){
-                    starElement.classList.add( 'filled')
-                    starElement.innerHTML= '&starf;'   
-                }else{
-                    starElement.classList.remove('filled')
-                    starElement.innerHTML= '&star;'
-                }
+                starElement.classList.toggle( 'filled', starElement.getAttribute('data-value') <= rating )
                 // starElement.innerHTML.toggle('&starf;', starElement.getAttribute('data-value') <= rating ) 
             })
         }
